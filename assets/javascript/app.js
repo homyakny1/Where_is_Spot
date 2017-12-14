@@ -23,33 +23,12 @@ var config = {
   // The start method will wait until the DOM is loaded.
   ui.start('#firebaseui-auth-container', uiConfig);
 
-// //   Add login event
-// $("#btnLogin").on("click", function(){
-//     // Get email and password
-//     var email = $("#txtEmail").val().trim();
-//     var pass = $("#txtPassword").val().trim();
-//     var auth = firebase.auth();
-//     //Sign In
-//     var promise = auth.signInWithEmailAndPassword(email, pass);
-//     console.log("pressed")
-//     promise.catch(e => console.log(e.message));
-// })
+  $("#btnLogout").on("click", function(){
+      firebase.auth().signOut();
+  })
 
-// $("#btnSignUp").on("click", function(){
-//     // Get email and password
-//     var email = $("#txtEmail").val().trim();
-//     var pass = $("#txtPassword").val().trim();
-//     var auth = firebase.auth();
-//     //Sign In
-//     var promise = auth.createUserWithEmailAndPassword(email, pass);
-//     console.log("pressed")
-//     promise.catch(e => console.log(e.message));
-//     auth.createUserWithEmailAndPassword(email, pass);
-// })
-// Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
-        location.href = "home.html";
         console.log("Welcome"+user.displayName)
     } else{
         console.log("Not Logged in")
