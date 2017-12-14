@@ -9,8 +9,6 @@
     <title>My awesome portfolio</title>
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-    <!-- Firebase Ui -->
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <!-- jquery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- CSS Reference -->
@@ -35,6 +33,16 @@
             <a id="btnLogout" class="active" href="index.html">Log Out</a>
         </li>
     </ul>
+
+    <!-- Portfolio Picture -->
+    <image id="profileImage" src="http://lorempixel.com/100/100" />
+    <input id="imageUpload" type="file" 
+           name="profile_photo" placeholder="Photo" required="" capture>
+    <!-- javascript for pic portfolio
+        do we want a button or click on the image???
+        $("#profileImage").click(function(e) {
+    $("#imageUpload").click();
+    }); -->
 
     <!-- main page -->
     <h1>portfolio</h1>
