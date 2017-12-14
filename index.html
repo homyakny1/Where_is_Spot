@@ -1,3 +1,54 @@
-<html>
-    This is a test(#3)
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>My awesome portfolio</title>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <!-- Firebase Ui -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <!-- jquery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- CSS Reference -->
+    <link rel="stylesheet" type="text/css" href="assets\css\styleHome.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+</head>
+
+<body>
+    <video id="bgVideo" autoplay loop muted width="100%">
+        <source src="assets/media/videoplayback.mp4" type="video/mp4" />
+        <source src="assets/media/videoplayback.webm" type="video/webm" />
+    </video>
+
+    <div id="fade"></div>
+
+    <div class="content">
+        <input id="txtEmail" type="email" placeholder="Email">
+        <input id="txtPassword" type="password" placeholder="Password">
+        <button id="btnLogin">Login</button>
+        <button id="btnSignUp">Sign Up</button>
+        <button id="btnLogout">Logout</button>
+    </div>
+
+
+    <div id="firebaseui-auth-container"></div>
+
+    <!-- footer -->
+    <footer>
+        <div class="footer">
+            <p class="text-muted">
+                <b>Copyright &copy; 2016</b>
+            </p>
+        </div>
+    </footer>
+
+    <!-- local javascript -->
+    <script src="assets/javascript/app.js"></script>
+
+</body>
+
 </html>
