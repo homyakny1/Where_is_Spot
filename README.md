@@ -5,7 +5,7 @@ https://homyakny1.github.io/Where_is_Spot/
 # Team: TBD
 
 # Project Title: Where’s Spot?
-
+I love PUps
 # Team Members: Brian Sedely, Eugene Khom, Faviana Lopez
 
 # Project Description: 
