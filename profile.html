@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Profile</title>
+
+    <!-- CSS Reference -->
+    <link rel="stylesheet" type="text/css" href="assets\css\style.css">
+
+</head>
+
+<body>
+    <!-- navbar -->
+    <ul>
+            <li>
+                <a id="search" class="searchPage" href="search.html">Search</a>
+            </li>
+            <li>
+                <a id="profile" class="dogProfile" href="profile.html">profile</a>
+            </li>
+            <li>
+                <a id="about" class="aboutPage" href="index.html">About</a>
+            </li>
+            <li style="float:right">
+                <a id="btnLogout" class="aboutPage" href="index.html">Log Out</a>
+            </li>
+        </ul>
+
+    <!-- Person Image -->
+    <div id="imageProfile"></div>
+  
+    <form action="">
+        <!-- Dog image -->
+        <image id="dogImage" src="http://lorempixel.com/100/100" />
+        <br \>
+        <input id="imageUpload" type="file" 
+           name="profile_photo" placeholder="Photo" required="" capture>
+        
+        <br \>
+        Dog's name:<input type="text" name="dogname" value="Spot"><br><br \>
+        Breed:<input type="text" name="breed" value="dalmatian"><br><br \>
+                <select name="dogsize">
+                    <option value="select">Dog Size</option>
+                    <option value="small">Small (&lt;20 lbs)</option>
+                    <option value="medium">Medium (20 lbs - 60 lbs)</option>
+                    <option value="large">Large (&gt;60)</option>
+                </select>
+                <select name="temperament">
+                    <option value="select">Dog Temperament</option>
+                    <option value="chill">Chill</option>
+                    <option value="modest">Modest</option>
+                    <option value="jumper">A Jumper</option>
+                </select>
+                <br>
+                <input type="checkbox" name="confimation_large" value="large_dog">Ok With Dogs &gt;60 lbs
+                <br>
+                <input type="checkbox" name="confirmatio_medium" value="medium_dog">Ok With Dogs &gt;20 lbs
+                <br>
+                <input type="checkbox" name="confirmation_small" value="small_dog">Ok With Dogs &lt;20 lbs
+                <br><br>
+                <br \>
+        <input type="submit" value="Submit">
+      </form>
+
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <p class="text-muted">Copyright &copy; 2017 Where is Spot</p>
+        </div>
+    </footer>
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <!-- moments.js -->
+    <scrpt src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.3/moment.min.js"></scrpt>
+    <!-- jquery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- local javascript -->
+    <script src="assets/Javascript/timesheet.js"></script>
+
+</body>
+
+</html>

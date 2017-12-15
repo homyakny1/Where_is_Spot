@@ -8,13 +8,29 @@ var config = {
     messagingSenderId: "947495581665"
 };
 
+firebase.initializeApp(config);
+
+var uiConfig = {
+    signInSuccessUrl: 'profile.html',
+    signInOptions: [
+        //Google profile auth 
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    ],
+};
+
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
+
 $("#btnLogout").on("click", function () {
     firebase.auth().signOut();
 })
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
-        console.log("Welcome" + user.displayName)
+        console.log(firebaseUser);
+        console.log("Welcome " + firebaseUser.displayName)
     } else {
         console.log("Not Logged in")
     }
