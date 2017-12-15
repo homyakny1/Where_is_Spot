@@ -2,7 +2,7 @@
 https://homyakny1.github.io/Where_is_Spot/
 
 
-# Team: TBD
+# Team: TBD - Changes
 
 # Project Title: Where’s Spot?
 I love PUps
