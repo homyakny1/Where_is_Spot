@@ -7,65 +7,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>search</title>
+    <!-- CSS Reference -->
+    <link rel="stylesheet" type="text/css" href="assets\css\style.css">
+    <!-- firebase.css -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import materialize.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
     <!-- jquery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- CSS Reference -->
-    <link rel="stylesheet" type="text/css" href="assets\css\style.css">
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 </head>
 
 <body>
     <!-- navbar -->
-    <ul>
-        <li>
-            <a id="search" class="searchPage" href="search.html">Search</a>
-        </li>
-        <li>
-            <a id="profile" class="dogProfile" href="profile.html">profile</a>
-        </li>
-        <li>
-            <a id="about" class="aboutPage" href="index.html">About</a>
-        </li>
-        <li style="float:right">
-            <a id="btnLogout" class="aboutPage" href="index.html">Log Out</a>
-        </li>
-    </ul>
-  
+    <nav>
+        <div class="nav-wrapper">
+            <a href="search.html" class="brand-logo" id="search" class="searchPage">
+                <i class="material-icons">pets</i>Logo</a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="search.html" id="search" class="searchPage">Search</a>
+                </li>
+                <li>
+                    <a href="profile.html" id="profile" class="dogProfile">Profile</a>
+                </li>
+                <li>
+                    <a href="index.html" id="about" class="aboutPage">About</a>
+                </li>
+                <li>
+                    <a href="index.html" id="btnLogout" class="aboutPage">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Google maps -->
     <iframe id="googleMaps" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d224445.01079799916!2d-81.5098659508528!3d28.48095320520121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sorlando+dog+parks!5e0!3m2!1sen!2sus!4v1513197060670"
         width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-    <!-- dropdown menu -->
-    <form action="go to google maps">
-        <select name="petPlaces">
-            <option value="select">Where Can Spot Go</option>
-            <option value="park">Dog Park</option>
-            <option value="petFriendly">Pet Friendly Stablishment</option>
-        </select>
-        <select name="city">
-            <option value="place">Where is Spot</option>
-            <option value="winterPark">Winter Park</option>
-            <option value="orlando">Orlando</option>
-            <option value="winter Garden">Winter Garden</option>
-        </select>
-        <input type="submit">
-    </form>
+    <!-- Dropdown Structure For Where Can Spot Go -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li>
+            <a href="#!">Park</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <a href="#!">Pet Friendly Location</a>
+        </li>
+    </ul>
 
+    <!-- Dropdown Structure For Where Is Spot -->
+    <ul id="dropdown2" class="dropdown-content">
+            <li>
+                <a href="#!">Orlando</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#!">Winter Garden</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#!">Winter Park</a>
+            </li>
+        </ul>
+    <nav>
+        <div class="nav-wrapper">
 
-    <!-- main page -->
-    <h1>Main page</h1>
+            <ul class="right hide-on-med-and-down">
+                <!-- Dropdown Trigger Where Can Spot Go -->
+                <li>
+                    <a class="dropdown-button" href="#!" data-activates="dropdown1">Where Can Spot Go
+                        <i class="material-icons right">arrow_drop_down</i>
+                    </a>
+                </li>
+                <!-- Dropdown Trigger Where is Spot -->
+                <li>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown2">Where Is Spot
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br />
 
-    <!-- footer -->
-    <footer>
+    <!-- Footer -->
+
+    <footer class="page-footer">
         <div class="container">
-            <p class="text-muted">Copyright &copy; 2016 Your Name</p>
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2014 Copyright Text
+            </div>
         </div>
     </footer>
+
     <!-- local javascript -->
     <script src="assets/javascript/app.js"></script>
-
+    <!-- materialize.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 
 </html>
