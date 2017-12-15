@@ -6,48 +6,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>My awesome portfolio</title>
+    <title>Profile</title>
 
     <!-- CSS Reference -->
     <link rel="stylesheet" type="text/css" href="assets\css\style.css">
 
-    <!-- Bootstrap -->
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/2.3.2/examples/sticky-footer-navbar.html" rel="stylesheet"> -->
-
 </head>
 
 <body>
-    <!-- ===== navbar ===== -->
+    <!-- navbar -->
     <ul>
-        <li>
-            <a id="home" class="homePage" href="index.html">Home</a>
-        </li>
-        <li>
-            <a id="portfolio" class="dogPortfolio" href="profile.html">profile</a>
-        </li>
-        <li>
-            <a id="about" class="aboutPage" href="openPage.html">About</a>
-        </li>
-        <li style="float:right">
-            <a id="logIn" class="active" href="logIn.html">Log Out</a>
-        </li>
-    </ul>
+            <li>
+                <a id="search" class="searchPage" href="search.html">Search</a>
+            </li>
+            <li>
+                <a id="profile" class="dogProfile" href="profile.html">profile</a>
+            </li>
+            <li>
+                <a id="about" class="aboutPage" href="index.html">About</a>
+            </li>
+            <li style="float:right">
+                <a id="btnLogout" class="aboutPage" href="index.html">Log Out</a>
+            </li>
+        </ul>
 
-    <!-- Portfolio Picture -->
-    <image id="profileImage" src="http://lorempixel.com/100/100" />
-    <input id="imageUpload" type="file" 
+    <!-- Person Image -->
+    <div id="imageProfile"></div>
+  
+    <form action="">
+        <!-- Dog image -->
+        <image id="dogImage" src="http://lorempixel.com/100/100" />
+        <br \>
+        <input id="imageUpload" type="file" 
            name="profile_photo" placeholder="Photo" required="" capture>
-    <!-- javascript for pic portfolio
-        do we want a button or click on the image???
-        $("#profileImage").click(function(e) {
-    $("#imageUpload").click();
-    }); -->
+        
+        <br \>
+        Dog's name:<input type="text" name="dogname" value="Spot"><br><br \>
+        Breed:<input type="text" name="breed" value="dalmatian"><br><br \>
+                <select name="dogsize">
+                    <option value="select">Dog Size</option>
+                    <option value="small">Small (&lt;20 lbs)</option>
+                    <option value="medium">Medium (20 lbs - 60 lbs)</option>
+                    <option value="large">Large (&gt;60)</option>
+                </select>
+                <select name="temperament">
+                    <option value="select">Dog Temperament</option>
+                    <option value="chill">Chill</option>
+                    <option value="modest">Modest</option>
+                    <option value="jumper">A Jumper</option>
+                </select>
+                <br>
+                <input type="checkbox" name="confimation_large" value="large_dog">Ok With Dogs &gt;60 lbs
+                <br>
+                <input type="checkbox" name="confirmatio_medium" value="medium_dog">Ok With Dogs &gt;20 lbs
+                <br>
+                <input type="checkbox" name="confirmation_small" value="small_dog">Ok With Dogs &lt;20 lbs
+                <br><br>
+                <br \>
+        <input type="submit" value="Submit">
+      </form>
 
-
-
-    <!-- main page -->
-    <h1>portfolio</h1>
+    </div>
 
     <!-- footer -->
     <footer>

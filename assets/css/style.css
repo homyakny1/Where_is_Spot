@@ -1,8 +1,10 @@
-/* ======== log in ======== */
-
-
+html,
+body {
+    margin: 0px;
+}
 
 /* ======== navbar ======== */
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -29,4 +31,11 @@ li a:hover {
 
 .active {
     background-color: #4CAF50;
+}
+
+
+/* =======Google Maps======= */
+
+#googleMaps {
+    width: 100%;
 }
