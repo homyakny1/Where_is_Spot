@@ -32,6 +32,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         console.log(firebaseUser);
         console.log("Welcome " + firebaseUser.displayName)
     } else {
-        console.log("Not Logged in")
+        console.log("User not Logged in")
     }
 });
