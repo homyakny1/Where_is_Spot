@@ -16,6 +16,7 @@
     <!-- jquery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- CSS Reference -->
+    <link rel="stylesheet" type="text/css" href="assets\css\style.css">
     <link rel="stylesheet" type="text/css" href="assets\css\styleHome.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 </head>
@@ -23,21 +24,21 @@
 <body>
 
     <!-- navbar -->
-    <ul>
-            <li>
-                <a id="search" class="searchPage" href="search.html">Search</a>
-            </li>
-            <li>
-                <a id="profile" class="dogProfile" href="profile.html">profile</a>
-            </li>
-            <li>
-                <a id="about" class="aboutPage" href="index.html">About</a>
-            </li>
-            <li style="float:right">
-                <a id="btnLogout" class="aboutPage" href="index.html">Log Out</a>
-            </li>
-        </ul>
-        
+    <ul id="indexBar" style="display:none">
+        <li>
+            <a id="search" class="searchPage" href="search.html">Search</a>
+        </li>
+        <li>
+            <a id="profile" class="dogProfile" href="profile.html">profile</a>
+        </li>
+        <li>
+            <a id="about" class="aboutPage" href="index.html">About</a>
+        </li>
+        <li style="float:right">
+            <a id="btnLogout" class="aboutPage" href="index.html">Log Out</a>
+        </li>
+    </ul>
+
     <video id="bgVideo" autoplay loop muted width="100%">
         <source src="assets/media/videoplayback.mp4" type="video/mp4" />
         <source src="assets/media/videoplayback.webm" type="video/webm" />
@@ -66,6 +67,20 @@
 
     <!-- local javascript -->
     <script src="assets/javascript/app.js"></script>
+    <script>
+        var uiConfig = {
+            signInSuccessUrl: 'profile.html',
+            signInOptions: [
+                //Google profile auth 
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            ],
+        };
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
 
 
 </body>

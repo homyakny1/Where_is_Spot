@@ -10,32 +10,32 @@ var config = {
 
 firebase.initializeApp(config);
 
-var uiConfig = {
-    signInSuccessUrl: 'profile.html',
-    signInOptions: [
-        //Google profile auth 
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    ],
-};
-
-// Initialize the FirebaseUI Widget using Firebase.
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-// The start method will wait until the DOM is loaded.
-ui.start('#firebaseui-auth-container', uiConfig);
-
+//create refrences
+var dbRefObject = firebase.database().ref().child("object");
+//sync object changes
+dbRefObject.on("value", snap => console.log(snap.val()));
+//On signout button click, signs out from account.
 $("#btnLogout").on("click", function () {
     firebase.auth().signOut();
 })
-
+// When logedin
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
+        $("#indexBar").css("display","block");
+        // console log Response
         console.log(firebaseUser);
-        console.log("Welcome " + firebaseUser.displayName)
-        var imgURL = firebaseUser.photoURL;
+        // Show users name
+        $("#imageProfile").prepend("Welcome " + firebaseUser.displayName)
+        //Show users photo
         var myImg = $("<img class='gifImage'>");
-        myImg.attr("src", imgURL);
+        myImg.attr("src", firebaseUser.photoURL);
         $("#imageProfile").append(myImg);
-    } else {
+        $("#firebaseui-auth-container").css("display","none")
+    } 
+    //if user not loged in console log not logged in
+    else {
         console.log("User not Logged in")
+        $("#indexBar").css("display","none");
+        $("#firebaseui-auth-container").css("display","block")
     }
 });
