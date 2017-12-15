@@ -31,6 +31,10 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
         console.log("Welcome " + firebaseUser.displayName)
+        var imgURL = firebaseUser.photoURL;
+        var myImg = $("<img class='gifImage'>");
+        myImg.attr("src", imgURL);
+        $("#imageProfile").append(myImg);
     } else {
         console.log("User not Logged in")
     }
