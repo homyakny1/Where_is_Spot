@@ -74,15 +74,6 @@
         </div>
     </div>
 
-
-    <!-- 
-        <div id="imageProfile"></div>
-            <div id="fireData">
-                value
-            <pre id="object"></pre>
-        </div> 
-    -->
-
     <!-- =====================================================================
                         ********DOG'S PROFILE FORM********
          =====================================================================-->
@@ -96,66 +87,58 @@
                     <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
                 </div>
             </div>
+    </div>
 
-            <!-- Input Dog's Information -->
-            <div class="row">
-                <div class="input-field col s6">
-                    <!-- Input Dog's Name -->
-                    <input id="dogName" type="text" class="validate">
-                    <label for="dogName">
-                        <span class="grey-text text-darken-4">Dog's Name</span>
-                    </label>
-                </div>
-                <div class="input-field col s6">
-                    <!-- Input Dog's Breed -->
-                    <input id="dogBreed" type="text" class="validate">
-                    <label for="dogBreed">
-                        <span class="grey-text text-darken-4">Dog's Breed</span>
-                    </label>
-                </div>
+    <!-- ==================================================================================== -->
+
+    <div class="row">
+        <div class="col s6">
+            <label>Dog Size</label>
+            <form action="#">
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="test1" />
+                    <label for="test1">Small (Under 20lbs)</label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="test2" />
+                    <label for="test2">Medium (20 to 60lbs)</label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="test3" />
+                    <label for="test3">Large (Over 60lbs)</label>
+                </p>
+
+            </form>
+        </div>
+
+        <div class="col s6">
+                <label>Dog Temperament</label>
+                <form action="#">
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="test4" />
+                        <label for="test4">Chill</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="test5" />
+                        <label for="test5">Mild</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="test6" />
+                        <label for="test6">A Jumper</label>
+                    </p>
+    
+                </form>
             </div>
-            <!-- Dropdown Menu Dog's Size -->
-            <div class="row">
-                <div class="input-field col s6">
-                    <!-- Dropdown Trigger Dog's Size -->
-                    <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dogSize'>Dog's Size</a>
-                    <!-- Dropdown Structure -->
-                    <ul id='dogSize' class='dropdown-content'>
-                        <li>
-                            <a href="#!"><span class="grey-text text-darken-4">Small (&lt;20 lbs)</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#!"><span class="grey-text text-darken-4">Medium (20 lbs - 60 lbs)</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#!"><span class="grey-text text-darken-4">Large (&gt;60)</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Dropdown Menu Dog's Temperament -->
-                <div class="input-field col s6">
-                    <!-- Dropdown Trigger Dog's Temperament -->
-                    <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dogTemp'>Dog's Mood</a>
-                    <!-- Dropdown Structure -->
-                    <ul id='dogTemp' class='dropdown-content'>
-                        <li>
-                            <a href="#!"><span class="grey-text text-darken-4">Chill</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#!"><span class="grey-text text-darken-4">Modest</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#!"><span class="grey-text text-darken-4">A Jumper</span></a>
-                        </li>
-                    </ul>
-                </div>
             </div>
-            
-            <!-- Checkbox Option -->
+    
+
+
+
+    <!-- ======================================================================================= -->
+
+    <!-- Checkbox Option -->
+    <div class="row">
+        <div class="input-field col s12">
             <p>
                 <input type="checkbox" id="dogPrefLg" />
                 <label for="dogPrefLg">Ok With Dogs &gt;60 lbs</label>
@@ -168,12 +151,18 @@
                 <input type="checkbox" id="dogPrefSm" />
                 <label for="dogPrefSm">Ok With Dogs &lt;20 lbs</label>
             </p>
-            <br \>
-            <!-- Submit Button -->
+        </div>
+    </div>
+    <br \>
+    <!-- Submit Button -->
+    <div class="row">
+        <div class="input-field col s12">
             <button id="add-dog" class="btn waves-effect waves-light card-panel grey darken-4" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
             </button>
-        </form>
+        </div>
+    </div>
+    </form>
     </div>
 
     <!-- =====================================================================
