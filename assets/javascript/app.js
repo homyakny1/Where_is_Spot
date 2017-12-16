@@ -86,6 +86,11 @@ var dogPrefLg;
 var dogPrefMd;
 var dogPrefSm;
 
+$(document).ready(function() {
+    $('select').material_select();
+  });
+        
+
 // ***********
 // DB CODE
 // ***********
