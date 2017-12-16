@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Search</title>
 
@@ -19,8 +18,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Import materialize.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <!-- Firebase Ui -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <!-- jquery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -58,6 +60,7 @@
     <!-- =====================================================================
                            ********GOOGLE MAPS********
          =====================================================================-->
+
     <iframe id="googleMaps" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d224445.01079799916!2d-81.5098659508528!3d28.48095320520121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sorlando+dog+parks!5e0!3m2!1sen!2sus!4v1513197060670"
         width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
@@ -81,29 +84,6 @@
                 </li>
             </ul>
         </div>
-
-        <!-- Dropdown Menu Where's Spot -->
-        <div class="input-field col s6">
-            <!-- Dropdown Where's Spot -->
-            <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dropdown2'>Where's Spot</a>
-
-            <!-- Dropdown Structure -->
-            <ul id='dropdown2' class='dropdown-content'>
-                <li>
-                    <span class="grey-text text-darken-4">Orlando</span>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <span class="grey-text text-darken-4">Winter Garden</span>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <span class="grey-text text-darken-4">Winter Park</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-
     <!-- =====================================================================
                             ********FOOTER******** 
          =====================================================================-->
