@@ -101,15 +101,15 @@
             <div class="row">
                 <div class="input-field col s6">
                     <!-- Input Dog's Name -->
-                    <input id="dog_name" type="text" class="validate">
-                    <label for="dog_name">
+                    <input id="dogName" type="text" class="validate">
+                    <label for="dogName">
                         <span class="grey-text text-darken-4">Dog's Name</span>
                     </label>
                 </div>
                 <div class="input-field col s6">
                     <!-- Input Dog's Breed -->
-                    <input id="dog_breed" type="text" class="validate">
-                    <label for="dog_breed">
+                    <input id="dogBreed" type="text" class="validate">
+                    <label for="dogBreed">
                         <span class="grey-text text-darken-4">Dog's Breed</span>
                     </label>
                 </div>
@@ -118,10 +118,10 @@
             <div class="row">
                 <div class="input-field col s4">
                     <!-- Dropdown Trigger Dog's Size -->
-                    <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dropdown1'>Dog's Size</a>
+                    <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dogSize'>Dog's Size</a>
 
                     <!-- Dropdown Structure -->
-                    <ul id='dropdown1' class='dropdown-content'>
+                    <ul id='dogSize' class='dropdown-content'>
                         <li>
                             <a href="#!">
                                 <span class="grey-text text-darken-4">Small (&lt;20 lbs)</span>
@@ -145,10 +145,10 @@
                 <!-- Dropdown Menu Dog's Temperament -->
                 <div class="input-field col s4">
                     <!-- Dropdown Trigger Dog's Temperament -->
-                    <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dropdown2'>Dog's Mood</a>
+                    <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dogTemp'>Dog's Mood</a>
 
                     <!-- Dropdown Structure -->
-                    <ul id='dropdown2' class='dropdown-content'>
+                    <ul id='dogTemp' class='dropdown-content'>
                         <li>
                             <a href="#!">
                                 <span class="grey-text text-darken-4">Chill</span>
@@ -191,20 +191,20 @@
             </div>
             <!-- Checkbox Option -->
             <p>
-                <input type="checkbox" id="test5" />
-                <label for="test5">Ok With Dogs &gt;60 lbs</label>
+                <input type="checkbox" id="dogPrefLg" />
+                <label for="dogPrefLg">Ok With Dogs &gt;60 lbs</label>
             </p>
             <p>
-                <input type="checkbox" id="test6" />
-                <label for="test6">Ok With Dogs &gt;20 lbs</label>
+                <input type="checkbox" id="dogPrefMd" />
+                <label for="dogPrefMd">Ok With Dogs &gt;20 lbs</label>
             </p>
             <p>
-                <input type="checkbox" id="test7" />
-                <label for="test7">Ok With Dogs &lt;20 lbs</label>
+                <input type="checkbox" id="dogPrefSm" />
+                <label for="dogPrefSm">Ok With Dogs &lt;20 lbs</label>
             </p>
             <br \>
             <!-- Submit Button -->
-            <button class="btn waves-effect waves-light card-panel grey darken-4" type="submit" name="action">Submit
+            <button id="add-dog" class="btn waves-effect waves-light card-panel grey darken-4" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
             </button>
         </form>
@@ -233,9 +233,11 @@
 
     <!-- =====================================================================
                                         ********SCRIPTS********
-                 =====================================================================-->
+         =====================================================================-->
     <!-- local javascript -->
     <script src="assets/javascript/app.js"></script>
+    <!-- local javascript -->
+    <script src="assets/javascript/database.js"></script>
     <!-- materialize.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
