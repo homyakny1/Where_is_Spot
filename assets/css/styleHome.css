@@ -34,7 +34,7 @@ video#bgVideo {
 
 .content{
     background: rgba(255, 255, 255, 0.5);
-    text-align: center;
+    /* text-align: center; */
     padding:20px;
     font-size: 25px;
     border-radius: 20px;
