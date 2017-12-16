@@ -1,7 +1,4 @@
-html,
-body {
-    margin: 0px;
-}
+
 
 /* ======== navbar ======== */
 
@@ -34,8 +31,3 @@ li a:hover {
 } */
 
 
-/* =======Google Maps======= */
-
-#googleMaps {
-    width: 100%;
-}

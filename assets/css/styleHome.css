@@ -1,3 +1,8 @@
+html,
+body {
+    margin: 0px;
+}
+
 /* Background video for the home page */
 video#bgVideo {
     position: fixed;
@@ -36,7 +41,7 @@ video#bgVideo {
     
 }
 
-.footer {
+/* .footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -44,6 +49,12 @@ video#bgVideo {
     background-color: rgba(255, 255, 255, 0.5);
     color: black;
     text-align: center;
+} */
+
+/* ======== Google Map ======== */
+
+#googleMaps {
+    width: 100%;
 }
 
 /* ======== Sticky Footer ======== */

@@ -6,31 +6,36 @@ var config = {
     projectId: "bc-project1",
     storageBucket: "bc-project1.appspot.com",
     messagingSenderId: "947495581665"
-  };
+};
 
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
 
-  var uiConfig = {
-    signInSuccessUrl: 'home.html',
-    signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    ],
-  };
-
-  // Initialize the FirebaseUI Widget using Firebase.
-  var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  // The start method will wait until the DOM is loaded.
-  ui.start('#firebaseui-auth-container', uiConfig);
-
-  $("#btnLogout").on("click", function(){
-      firebase.auth().signOut();
-  })
-
+//create refrences
+var dbRefObject = firebase.database().ref().child("object");
+//sync object changes
+dbRefObject.on("value", snap => console.log(snap.val()));
+//On signout button click, signs out from account.
+$("#btnLogout").on("click", function () {
+    firebase.auth().signOut();
+})
+// When logedin
 firebase.auth().onAuthStateChanged(firebaseUser => {
-    if(firebaseUser){
-        console.log("Welcome"+user.displayName)
-    } else{
-        console.log("Not Logged in")
+    if (firebaseUser) {
+        $("#indexBar").css("display","block");
+        // console log Response
+        console.log(firebaseUser);
+        // Show users name
+        $("#imageProfile").prepend("Welcome " + firebaseUser.displayName)
+        //Show users photo
+        var myImg = $("<img class='gifImage'>");
+        myImg.attr("src", firebaseUser.photoURL);
+        $("#imageProfile").append(myImg);
+        $("#firebaseui-auth-container").css("display","none")
+    } 
+    //if user not loged in console log not logged in
+    else {
+        console.log("User not Logged in")
+        $("#indexBar").css("display","none");
+        $("#firebaseui-auth-container").css("display","block")
     }
 });
