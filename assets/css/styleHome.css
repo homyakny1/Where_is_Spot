@@ -195,3 +195,7 @@ body {
     padding: 0;
     margin:0;
   }
+#imageProfile{
+    width: 20%;
+    border-radius: 100%;
+}
