@@ -31,21 +31,20 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         myImg.attr("src", firebaseUser.photoURL);
         $("#imageProfile").append(myImg);
         $("#firebaseui-auth-container").css("display", "none");
-        ownerID = firebaseUser.uid;
-        console.log(ownerID);
+        var ownerID = firebaseUser.uid;
         // ++this add-dog needs to be linked to a button on html
         $("#add-dog").on("click", function (event) {
             event.preventDefault();
             console.log("pressed")
 
            // ++these need to be added as IDs in the HTML
-            dogName = $("#dogName").val().trim();
-            dogBreed = $("#dogBreed").val().trim();
-            dogSize = $("#dogSize").val().trim();
-            dogTemp = $("#dogTemp").val().trim();
-            dogPrefLg = $("#dogPrefLg").val().trim();
-            dogPrefMd = $("#dogPrefMd").val().trim();
-            dogPrefSm = $("#dogPrefSm").val().trim();
+           var dogName = $("#dogName").val();
+           var dogBreed = $("#dogBreed").val();
+           var dogSize = $("#dogSize option:selected" ).text();
+           var dogTemp = $("#dogTemp option:selected" ).text();
+           var dogPrefLg = $("#dogPrefLg").val();
+           var dogPrefMd = $("#dogPrefMd").val();
+           var dogPrefSm = $("#dogPrefSm").val();
 
 
         console.log(ownerID);
