@@ -75,96 +75,116 @@
     </div>
 
     <!-- =====================================================================
-                        ********DOG'S PROFILE FORM********
+                       ********ADD DOG'S PROFILE FORM********
+                       JavaScript portion:
+                        $(document).ready(function(){
+                        $('.collapsible').collapsible();
+                        });
          =====================================================================-->
-    <div class="row">
-        <form class="col s12">
-            <!-- Dog image -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <image id="dogImage" src="https://static-s.aa-cdn.net/img/ios/1034197315/6294a01ff5937e26ca7539bea819db52" />
+    <ul class="collapsible" data-collapsible="accordion">
+        <li>
+            <div class="collapsible-header">
+                <i class="material-icons">pets</i>Ralph</div>
+            <div class="collapsible-body">
+                <span>Welcome Ralph
+
+                    <!-- =====================================================================
+                        ********DOG'S PROFILE FORM********
+                         =====================================================================-->
+                    <div class="row">
+                        <form class="col s12">
+                            <!-- Dog image -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <image id="dogImage" src="https://static-s.aa-cdn.net/img/ios/1034197315/6294a01ff5937e26ca7539bea819db52" />
+                                    <br \>
+                                    <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
+                                </div>
+                            </div>
+                            <!-- Input Dog's Information -->
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <!-- Input Dog's Name -->
+                                    <input id="dogName" type="text" class="validate">
+                                    <label for="dogName">
+                                        <span class="grey-text text-darken-4">Dog's Name</span>
+                                    </label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <!-- Input Dog's Breed -->
+                                    <input id="dogBreed" type="text" class="validate">
+                                    <label for="dogBreed">
+                                        <span class="grey-text text-darken-4">Dog's Breed</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Dropdown Menu Dog Size -->
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <select>
+                                        <optgroup label="Size">
+                                            <option value="1">Small (&lt;20 lbs)</option>
+                                            <option value="2">Medium (20-60 lbs)</option>
+                                            <option value="3">Large (&gt;60 lbs)</option>
+                                        </optgroup>
+                                    </select>
+                                    <label>Dog's Size</label>
+                                </div>
+                                <!-- Dropdown Menu Dog Temperament -->
+                                <div class="input-field col s6">
+                                    <select>
+                                        <optgroup label="Temperament">
+                                            <option value="4">Chill</option>
+                                            <option value="5">Modest</option>
+                                            <option value="6">A Jumper</option>
+                                        </optgroup>
+                                    </select>
+                                    <label>Dog's Temperament</label>
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- =====================================================================
+                                  ********CHECKBOX********
+                         =====================================================================-->
+                    <p>
+                        <input type="checkbox" id="dogPrefLg" />
+                        <label for="dogPrefLg">Ok With Dogs &gt;60 lbs</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="dogPrefMd" />
+                        <label for="dogPrefMd">Ok With Dogs &gt;20 lbs</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="dogPrefSm" />
+                        <label for="dogPrefSm">Ok With Dogs &lt;20 lbs</label>
+                    </p>
                     <br \>
-                    <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
-                </div>
+                    <!-- Submit Button -->
+                    <button id="add-dog" class="btn waves-effect waves-light card-panel grey darken-4" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                    </form>
             </div>
-
-            <!-- Input Dog's Information -->
-            <div class="row">
-                <div class="input-field col s6">
-                    <!-- Input Dog's Name -->
-                    <input id="dogName" type="text" class="validate">
-                    <label for="dogName">
-                        <span class="grey-text text-darken-4">Dog's Name</span>
-                    </label>
-                </div>
-                <div class="input-field col s6">
-                    <!-- Input Dog's Breed -->
-                    <input id="dogBreed" type="text" class="validate">
-                    <label for="dogBreed">
-                        <span class="grey-text text-darken-4">Dog's Breed</span>
-                    </label>
-                </div>
+            </span>
             </div>
+        </li>
 
-            <!-- Dropdown Menu Dog Sizev -->
-            <div class="row">
-                <div class="input-field col s6">
-                    <select id="dogSize">
-                        <option value="1">Small</option>
-                        <option value="2">Medium</option>
-                        <option value="3">Large</option>
-                    </select>
-                    <label>Dog's Size</label>
-                </div>
-
-                <div class="input-field col s6">
-                    <select id="dogTemp">
-                        <option value="1">Chill</option>
-                        <option value="2">Modest</option>
-                        <option value="3">A Jumper</option>
-                    </select>
-                    <label>Dog's Temperament</label>
-                </div>
-            </div>
-
-    </div>
-    </div>
-
-
-    <!-- Checkbox Option -->
-    <p>
-        <input type="checkbox" id="dogPrefLg" />
-        <label for="dogPrefLg">Ok With Dogs &gt;60 lbs</label>
-    </p>
-    <p>
-        <input type="checkbox" id="dogPrefMd" />
-        <label for="dogPrefMd">Ok With Dogs &gt;20 lbs</label>
-    </p>
-    <p>
-        <input type="checkbox" id="dogPrefSm" />
-        <label for="dogPrefSm">Ok With Dogs &lt;20 lbs</label>
-    </p>
-    <br \>
-    <!-- Submit Button -->
-    <button id="add-dog" class="btn waves-effect waves-light card-panel grey darken-4" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-    </button>
-    </form>
-    </div>
+        
+    </ul>
 
     <!-- =====================================================================
-                            ********FOOTER******** 
+                              ********ADD DOG BUTTON******** 
+         =====================================================================-->
+
+
+    <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    
+
+    <!-- =====================================================================
+                              ********FOOTER******** 
          =====================================================================-->
     <footer class="page-footer card-panel grey lighten-3">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s6">
-                    <h5 class="white-text">
-                        <span class="black-text">Add Group Member's Info</h5>
-                    </span>
-                </div>
-            </div>
-        </div>
         <div class="footer-copyright">
             <div class="container">
                 <span class="black-text">© 2017 Copyright BEF</span>
@@ -172,7 +192,7 @@
         </div>
     </footer>
     <!-- =====================================================================
-                                        ********SCRIPTS********
+                            ********SCRIPTS********
          =====================================================================-->
     <!-- materialize.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

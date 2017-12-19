@@ -60,8 +60,7 @@
                            ********GOOGLE MAPS********
          =====================================================================-->
 
-    <iframe id="googleMaps" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d224445.01079799916!2d-81.5098659508528!3d28.48095320520121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sorlando+dog+parks!5e0!3m2!1sen!2sus!4v1513197060670"
-        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <div id="googleMaps"></div>
 
     <!-- =====================================================================
                         ********DROP DOWN MENU********
@@ -75,14 +74,11 @@
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content'>
                 <li>
-                    <a href="#!">
-                        <span class="grey-text text-darken-4">Dog Park</a>
-                    </span>
+                    <a href="#!" class="grey-text text-darken-4" data-val="Dog Park">Dog Park</a>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <span class="grey-text text-darken-4">Pet Friendly Location</a>
-                    </span>
+                    <a href="#!" class="grey-text text-darken-4" data-val="Pet Friendly Places">Pet Friendly Places</a>
                 </li>
             </ul>
         </div>
@@ -130,12 +126,146 @@
     <!-- =====================================================================
                                 ********SCRIPTS********
          =====================================================================-->
+    <script>
+// map variables
+var map;
+var infoWindow;
+var service;
+
+// storing the latitude and logitude of our class just in case we run into errors with browsers that no longer support non https browsers...Chrome 50
+var latitude = 28.5383;
+var longitude = -81.3792;
+
+// geolocation function checkint to see if geolocation is supported on user's browser
+function getLocation() {
+
+	// if geolocation works
+    if (navigator.geolocation) {
+
+    	// pass the success or error function
+        navigator.geolocation.getCurrentPosition(success, error);
+
+    // if geolocation doesn't work
+    } else { 
+
+        console.log("Geolocation is not supported by this browser.");
+    
+    } // end if else
+
+} // end getLocation()
+
+// success function that was passed in getLocation above and is being passed the position we get from geolocation
+function success(position) {
+
+	// store the latitude coordinate in the latitude variable
+	latitude = position.coords.latitude;
+	console.log("Latitude: " + position.coords.latitude);
+
+	// store the lognitude coordinates in the longitute variable
+	longitude = position.coords.longitude;
+    console.log("Longitude: " + position.coords.longitude);
+
+} // end success()
+
+// call the getLocatoin function so this works on page load
+getLocation();
+
+// map functions
+function initMap() {
+
+	// new google map
+	map = new google.maps.Map(document.getElementById('googleMaps'), {
+
+		// this is where to store the coordinates
+		center: {lat: latitude, lng: longitude},
+		// deals wtih the area the map displays
+ 		zoom: 13,
+
+  	}); // end map
+
+	
+  	infoWindow = new google.maps.InfoWindow();
+  	service = new google.maps.places.PlacesService(map);
+
+  	// The idle event is a debounced event, so we can query & listen without
+  	// throwing too many requests at the server.
+  	map.addListener('idle', performSearch);
+
+} // end initMap()
+
+function performSearch() {
+
+	// request object that takes the keywords for our search
+  	var request = {
+    	bounds: map.getBounds(),
+    	keyword: 'Dog Parks Orlando'
+  	};
+
+  	// service is using the request and callback functions
+  	service.radarSearch(request, callback);
+
+} // end performSearch()
+
+function callback(results, status) {
+
+	// if there is no google map return an error
+  	if (status !== google.maps.places.PlacesServiceStatus.OK) {
+    	console.error(status);
+    	return;
+  	} // end if
+
+  	// loop through the google map search results and display with markers to the map
+  	for (var i = 0, result; result = results[i]; i++) {
+
+    	// 	
+	addMarker(result);
+  	} // end for loop
+
+} // end callback()
+
+function addMarker(place) {
+
+	// variable marker that plots the google places info
+  	var marker = new google.maps.Marker({
+
+    	map: map,
+    	position: place.geometry.location,
+    	icon:'assets/media/pets.png'
+
+  	}); // end marker
+
+	// google maps event listner that brings up the google maps info as a pop-up on the map when icon is clicked
+  	google.maps.event.addListener(marker, 'click', function() {
+
+    	service.getDetails(place, function(result, status) {
+
+    		// check to make sure there is a google maps places and return errors if not
+      		if (status !== google.maps.places.PlacesServiceStatus.OK) {
+        		console.error(status);
+        		return;
+    		} // end if
+
+    		// the details that are being passed to the pop-up on google maps
+      		infoWindow.setContent(result.name);
+      		infoWindow.open(map, marker);
+    	}); // end service
+  	
+  	}); // end google maps marker event listner
+
+
+}; // end addMarker()
+    </script>
     <!-- materialize.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <!-- local javascript -->
     <script src="assets/javascript/app.js"></script>
     <!-- local javascript -->
     <script src="assets/javascript/database.js"></script>
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHk95-lubVI3oVjkYiWihfYzcL3e5eX8g&callback=initMap&libraries=places"
+        async defer></script>
+        <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHk95-lubVI3oVjkYiWihfYzcL3e5eX8g&libraries=places"></script> -->
+        
 </body>
 
 </html>
