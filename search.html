@@ -109,9 +109,6 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s6">
-                    <h5 class="white-text">
-                        <span class="black-text">Add Group Member's Info</h5>
-                    </span>
                 </div>
             </div>
         </div>
@@ -121,6 +118,80 @@
             </div>
         </div>
     </footer>
+
+    <!-- =====================================================================
+                         ********GOOGLE GEOLOCATION********
+         =====================================================================-->
+    <script>
+        getLocation();
+        var map;
+        var infoWindow;
+        var service;
+        // geolocation function checkint to see if geolocation is supported on user's browser
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success);
+            };
+        };
+        // success function that was passed in getLocation above and is being passed the position we get from geolocation
+        function success(position) {
+            // store the latitude coordinate in the latitude variable
+            latitude = position.coords.latitude;
+            console.log("Latitude: " + position.coords.latitude);
+            // store the lognitude coordinates in the longitute variable
+            longitude = position.coords.longitude;
+            console.log("Longitude: " + position.coords.longitude);
+        }
+        // map functions
+        function initMap() {
+            // new google map
+            map = new google.maps.Map(document.getElementById('googleMaps'), {
+                center: {
+                    lat: 28.5383,
+                    lng: -81.3792
+                },
+                zoom: 13,
+            });
+            infoWindow = new google.maps.InfoWindow();
+            service = new google.maps.places.PlacesService(map);
+            map.addListener('idle', performSearch);
+        }
+        function performSearch() {
+            // search with a keyword
+            var request = {
+                location: {
+                    lat: 28.5383,
+                    lng: -81.3792
+                },
+                radius: '10000',
+                keyword: 'Dog Parks Orlando'
+            };
+            service.nearbySearch(request, callback);
+        };
+        function callback(results, status) {
+            // loop to create markers on the map
+            for (var i = 0, result; result = results[i]; i++) {
+                addMarker(result);
+            };
+        };
+        function addMarker(place) {
+            // variable marker that plots the google places info
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location,
+                icon: 'assets/media/pets.png'
+            });
+            // when marker clicked pop up window shows the name of the park
+            google.maps.event.addListener(marker, 'click', function () {
+                service.getDetails(place, function (result, status) {
+                    //infoWinow poulation
+                    infoWindow.setContent(result.name);
+                    infoWindow.open(map, marker);
+                });
+            });
+        };
+    </script>
+
     <!-- =====================================================================
                                 ********SCRIPTS********
          =====================================================================-->
