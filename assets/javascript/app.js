@@ -25,11 +25,11 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         // console log Response
         console.log(firebaseUser);
         // Show users name
-        $("#imageProfile").prepend("Welcome " + firebaseUser.displayName);
+        $("#imageProfile").append("Welcome " + firebaseUser.displayName);
         //Show users photo
-        var myImg = $("<img class='gifImage'>");
+        var myImg = $("<img class='gifImage'>"<br>);
         myImg.attr("src", firebaseUser.photoURL);
-        $("#imageProfile").append(myImg);
+        $("#imageProfile").prepend(myImg);
         $("#firebaseui-auth-container").css("display", "none");
         var ownerID = firebaseUser.uid;
         // ++this add-dog needs to be linked to a button on html
