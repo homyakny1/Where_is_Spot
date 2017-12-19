@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         // Show users name
         $("#imageProfile").append("Welcome " + firebaseUser.displayName);
         //Show users photo
-        var myImg = $("<img class='gifImage'>"<br>);
+        var myImg = $("<img class='gifImage'><br>");
         myImg.attr("src", firebaseUser.photoURL);
         $("#imageProfile").prepend(myImg);
         $("#firebaseui-auth-container").css("display", "none");
