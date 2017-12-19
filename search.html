@@ -67,41 +67,39 @@
          =====================================================================-->
     <!-- Dropdown Menu Where Can Spot Go -->
     <div class="row">
-        <div class="input-field col s6">
-            <!-- Dropdown Trigger Where Can Spot Go -->
-            <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dropdown1'>Where Can Spot Go</a>
-
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-                <li>
-                    <a href="#!" class="grey-text text-darken-4" data-val="Dog Park">Dog Park</a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a href="#!" class="grey-text text-darken-4" data-val="Pet Friendly Places">Pet Friendly Places</a>
-                </li>
-            </ul>
-        </div>
+            <div class="input-field col s6">
+                    <!-- Dropdown Trigger Where Can Spot Go -->
+                    <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dropdown1'>Where Can Spot Go</a>
+        
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Dog Park">Dog Park</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Veterinary">Veterinary</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Grooming">Grooming</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Pet Store">Pet Store</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Pet Store">Pet Shelter</a>
+                        </li>
+                    </ul>
+                </div>
 
         <!-- Dropdown Menu Where's Spot -->
         <div class="input-field col s6">
-            <!-- Dropdown Where's Spot -->
-            <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dropdown2'>Where's Spot</a>
-
-            <!-- Dropdown Structure -->
-            <ul id='dropdown2' class='dropdown-content'>
-                <li>
-                    <span class="grey-text text-darken-4">Orlando</span>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <span class="grey-text text-darken-4">Winter Garden</span>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <span class="grey-text text-darken-4">Winter Park</span>
-                </li>
-            </ul>
+                <button id="add-dog" class="btn waves-effect waves-light card-panel grey darken-4" type="submit" name="action">Search
+                        <i class="material-icons right">send</i>
+                    </button>
         </div>
     </div>
     <!-- =====================================================================
@@ -175,11 +173,15 @@
         function performSearch() {
             // search with a keyword
             var request = {
-                bounds: map.getBounds(),
+                location: {
+                    lat: 28.5383,
+                    lng: -81.3792
+                },
+                radius: '10000',
                 keyword: 'Dog Parks Orlando'
             };
 
-            service.radarSearch(request, callback);
+            service.nearbySearch(request, callback);
         };
 
         function callback(results, status) {
