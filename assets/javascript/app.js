@@ -31,21 +31,20 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         myImg.attr("src", firebaseUser.photoURL);
         $("#imageProfile").append(myImg);
         $("#firebaseui-auth-container").css("display", "none");
-        ownerID = firebaseUser.uid;
-        console.log(ownerID);
+        var ownerID = firebaseUser.uid;
         // ++this add-dog needs to be linked to a button on html
         $("#add-dog").on("click", function (event) {
             event.preventDefault();
             console.log("pressed")
 
            // ++these need to be added as IDs in the HTML
-            dogName = $("#dogName").val().trim();
-            dogBreed = $("#dogBreed").val().trim();
-            dogSize = $("#dogSize").val().trim();
-            dogTemp = $("#dogTemp").val().trim();
-            dogPrefLg = $("#dogPrefLg").val().trim();
-            dogPrefMd = $("#dogPrefMd").val().trim();
-            dogPrefSm = $("#dogPrefSm").val().trim();
+           var dogName = $("#dogName").val();
+           var dogBreed = $("#dogBreed").val();
+           var dogSize = $("#dogSize option:selected" ).text();
+           var dogTemp = $("#dogTemp option:selected" ).text();
+           var dogPrefLg = $("#dogPrefLg").val();
+           var dogPrefMd = $("#dogPrefMd").val();
+           var dogPrefSm = $("#dogPrefSm").val();
 
 
         console.log(ownerID);
@@ -94,3 +93,54 @@ $(document).ready(function() {
 // ***********
 // DB CODE
 // ***********
+        
+
+// ***********
+// DB CODE
+// ***********
+
+//************
+// ABOUT US
+//************
+
+// Open the Modal
+function openModal() {
+    document.getElementById('myModal').style.display = "block";
+  }
+  
+  // Close the Modal
+  function closeModal() {
+    document.getElementById('myModal').style.display = "none";
+  }
+  
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  // Next/previous controls
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  // Thumbnail image controls
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
+  }
+  

@@ -60,52 +60,46 @@
                            ********GOOGLE MAPS********
          =====================================================================-->
 
-    <iframe id="googleMaps" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d224445.01079799916!2d-81.5098659508528!3d28.48095320520121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sorlando+dog+parks!5e0!3m2!1sen!2sus!4v1513197060670"
-        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <div id="googleMaps"></div>
 
     <!-- =====================================================================
                         ********DROP DOWN MENU********
          =====================================================================-->
     <!-- Dropdown Menu Where Can Spot Go -->
     <div class="row">
-        <div class="input-field col s6">
-            <!-- Dropdown Trigger Where Can Spot Go -->
-            <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dropdown1'>Where Can Spot Go</a>
-
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-                <li>
-                    <a href="#!">
-                        <span class="grey-text text-darken-4">Dog Park</a>
-                    </span>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <span class="grey-text text-darken-4">Pet Friendly Location</a>
-                    </span>
-                </li>
-            </ul>
-        </div>
+            <div class="input-field col s6">
+                    <!-- Dropdown Trigger Where Can Spot Go -->
+                    <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dropdown1'>Where Can Spot Go</a>
+        
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Dog Park">Dog Park</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Veterinary">Veterinary</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Grooming">Grooming</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Pet Store">Pet Store</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#!" class="grey-text text-darken-4" data-val="Pet Store">Pet Shelter</a>
+                        </li>
+                    </ul>
+                </div>
 
         <!-- Dropdown Menu Where's Spot -->
         <div class="input-field col s6">
-            <!-- Dropdown Where's Spot -->
-            <a class='dropdown-button btn card-panel grey darken-4' href='#' data-activates='dropdown2'>Where's Spot</a>
-
-            <!-- Dropdown Structure -->
-            <ul id='dropdown2' class='dropdown-content'>
-                <li>
-                    <span class="grey-text text-darken-4">Orlando</span>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <span class="grey-text text-darken-4">Winter Garden</span>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <span class="grey-text text-darken-4">Winter Park</span>
-                </li>
-            </ul>
+                <button id="add-dog" class="btn waves-effect waves-light card-panel grey darken-4" type="submit" name="action">Search
+                        <i class="material-icons right">send</i>
+                    </button>
         </div>
     </div>
     <!-- =====================================================================
@@ -115,9 +109,6 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s6">
-                    <h5 class="white-text">
-                        <span class="black-text">Add Group Member's Info</h5>
-                    </span>
                 </div>
             </div>
         </div>
@@ -127,6 +118,80 @@
             </div>
         </div>
     </footer>
+
+    <!-- =====================================================================
+                         ********GOOGLE GEOLOCATION********
+         =====================================================================-->
+    <script>
+        getLocation();
+        var map;
+        var infoWindow;
+        var service;
+        // geolocation function checkint to see if geolocation is supported on user's browser
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success);
+            };
+        };
+        // success function that was passed in getLocation above and is being passed the position we get from geolocation
+        function success(position) {
+            // store the latitude coordinate in the latitude variable
+            latitude = position.coords.latitude;
+            console.log("Latitude: " + position.coords.latitude);
+            // store the lognitude coordinates in the longitute variable
+            longitude = position.coords.longitude;
+            console.log("Longitude: " + position.coords.longitude);
+        }
+        // map functions
+        function initMap() {
+            // new google map
+            map = new google.maps.Map(document.getElementById('googleMaps'), {
+                center: {
+                    lat: 28.5383,
+                    lng: -81.3792
+                },
+                zoom: 13,
+            });
+            infoWindow = new google.maps.InfoWindow();
+            service = new google.maps.places.PlacesService(map);
+            map.addListener('idle', performSearch);
+        }
+        function performSearch() {
+            // search with a keyword
+            var request = {
+                location: {
+                    lat: 28.5383,
+                    lng: -81.3792
+                },
+                radius: '10000',
+                keyword: 'Dog Parks Orlando'
+            };
+            service.nearbySearch(request, callback);
+        };
+        function callback(results, status) {
+            // loop to create markers on the map
+            for (var i = 0, result; result = results[i]; i++) {
+                addMarker(result);
+            };
+        };
+        function addMarker(place) {
+            // variable marker that plots the google places info
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location,
+                icon: 'assets/media/pets.png'
+            });
+            // when marker clicked pop up window shows the name of the park
+            google.maps.event.addListener(marker, 'click', function () {
+                service.getDetails(place, function (result, status) {
+                    //infoWinow poulation
+                    infoWindow.setContent(result.name);
+                    infoWindow.open(map, marker);
+                });
+            });
+        };
+    </script>
+
     <!-- =====================================================================
                                 ********SCRIPTS********
          =====================================================================-->
@@ -136,6 +201,11 @@
     <script src="assets/javascript/app.js"></script>
     <!-- local javascript -->
     <script src="assets/javascript/database.js"></script>
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHk95-lubVI3oVjkYiWihfYzcL3e5eX8g&callback=initMap&libraries=places"
+        async defer></script>
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHk95-lubVI3oVjkYiWihfYzcL3e5eX8g&libraries=places"></script> -->
+
 </body>
 
 </html>
