@@ -1,7 +1,7 @@
-html,
+/* html,
 body {
     margin: 0px;
-}
+} */
 
 /* Background video for the home page */
 video#bgVideo {
@@ -54,6 +54,7 @@ video#bgVideo {
 /* ======== Google Map ======== */
 
 #googleMaps {
+    height: 450px;
     width: 100%;
 }
 
